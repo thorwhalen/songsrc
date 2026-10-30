@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "songsrc"
+version = "0.0.1"
+description = "Lean song acquisition: Genius lyrics and annotations, LRCLIB line timings (httpx + beautifulsoup4 only)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = ["lyrics", "genius", "lrclib", "annotations", "lrc"]
+authors = [{ name = "Thor Whalen" }]
+dependencies = ["httpx>=0.24", "beautifulsoup4>=4.11"]
+
+[project.urls]
+Homepage = "https://github.com/thorwhalen/songsrc"
+Repository = "https://github.com/thorwhalen/songsrc"
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pytest-cov>=4.0", "ruff>=0.1.0"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["songsrc"]
+
+[tool.hatch.build.targets.sdist]
+include = ["songsrc/**/*.py", "tests/**/*.py", "README.md", "LICENSE"]
+
+[tool.ruff.lint]
+select = ["D100"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.wads.ci.testing]
+enabled = true
+python_versions = ["3.10", "3.12"]
+pytest_args = ["-v", "--tb=short"]
+test_on_windows = true
+
+[tool.wads.ci.publish]
+enabled = true
+skip_ci_marker = "[skip ci]"
+publish_marker = "[publish]"
+
+[tool.wads.ci.docs]
+enabled = false

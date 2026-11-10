@@ -19,7 +19,7 @@ _JUNK_SELECTORS = [
     '[class*="LyricsHeader"]',
     '[class*="RightSidebar"]',
     '[class*="Ad__"]',
-    '[data-exclude-from-selection]',
+    "[data-exclude-from-selection]",
 ]
 
 

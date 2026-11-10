@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "songsrc"
-version = "0.0.1"
+version = "0.0.2"
 description = "Lean song acquisition: Genius lyrics and annotations, LRCLIB line timings (httpx + beautifulsoup4 only)"
 readme = "README.md"
 requires-python = ">=3.10"

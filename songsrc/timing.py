@@ -42,9 +42,7 @@ class LyricTiming:
         return None if self.end_s is None else round(self.end_s - self.start_s, 3)
 
 
-def search_lrclib(
-    query: str, *, timeout: float = 30.0
-) -> list[dict[str, Any]]:
+def search_lrclib(query: str, *, timeout: float = 30.0) -> list[dict[str, Any]]:
     """Search LRCLIB; each result may carry ``syncedLyrics`` (LRC) + metadata."""
     r = httpx.get(
         f"{_LRCLIB}/search",

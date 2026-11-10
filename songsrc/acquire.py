@@ -101,9 +101,7 @@ def acquire_song(
     if progress:
         progress(f"  annotations: {title}")
     referents = [_normalise_referent(r) for r in client.iter_referents(song_id)]
-    n_verified = sum(
-        1 for r in referents for a in r["annotations"] if a["verified"]
-    )
+    n_verified = sum(1 for r in referents for a in r["annotations"] if a["verified"])
     n_annotations = sum(len(r["annotations"]) for r in referents)
 
     return {

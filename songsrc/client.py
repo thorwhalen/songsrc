@@ -130,7 +130,9 @@ class GeniusClient:
         """Return the album object (name, artist, cover art, ...)."""
         return self._api_get(f"/albums/{album_id}", text_format=text_format)["album"]
 
-    def album_tracks(self, album_id: int, *, per_page: int = 50) -> list[dict[str, Any]]:
+    def album_tracks(
+        self, album_id: int, *, per_page: int = 50
+    ) -> list[dict[str, Any]]:
         """Return the ordered track list for an album.
 
         Each element is a track object whose ``song`` key holds the song stub.

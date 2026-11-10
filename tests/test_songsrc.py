@@ -23,7 +23,11 @@ def test_parse_lrc_windows_and_gaps():
 
 
 def test_referent_keeps_the_verified_flag():
-    ref = {"id": 1, "fragment": "f", "annotations": [{"verified": 1, "body": {"plain": "x"}, "authors": []}]}
+    ref = {
+        "id": 1,
+        "fragment": "f",
+        "annotations": [{"verified": 1, "body": {"plain": "x"}, "authors": []}],
+    }
     assert _normalise_referent(ref)["annotations"][0]["verified"] is True
 
 
@@ -36,7 +40,11 @@ def test_client_retries_transient_failures(monkeypatch):
 
     def handler(request):
         calls.append(1)
-        return httpx.Response(503) if len(calls) < 3 else httpx.Response(200, json={"response": {"song": {"id": 1}}})
+        return (
+            httpx.Response(503)
+            if len(calls) < 3
+            else httpx.Response(200, json={"response": {"song": {"id": 1}}})
+        )
 
     monkeypatch.setattr("time.sleep", lambda s: None)
     client = GeniusClient(access_token=None, min_interval=0)
